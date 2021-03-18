@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ILT-5</string>
+
+    <string-array name="data_name">
+        <item>Hindia</item>
+        <item>Pamungkas</item>
+        <item>Fourtwnty</item>
+        <item>Awkarin </item>
+        <item>Young Lex</item>
+    </string-array>
+
+    <string-array name="data_photo">
+        <item>https://www.youngontop.com/wp-content/uploads/2020/01/Alasan-Kenapa-Hindia-Patut-Kamu-Jadikan-Panutan.png</item>
+        <item>https://i1.sndcdn.com/artworks-000586490123-sj7t83-t500x500.jpg</item>
+        <item>https://pophariini.com/wp-content/uploads/2018/09/Fourtwnty.jpg</item>
+        <item>https://asset.kompas.com/crops/rdvXPyM35ZJO9HrsEDGUZ_Vgb_I=/31x32:507x349/750x500/data/photo/2019/09/26/5d8c5b431c184.jpg</item>
+        <item>https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1591181416/vjtfep43ehethbjzloix.jpg</item>
+    </string-array>
+
+
+</resources>
