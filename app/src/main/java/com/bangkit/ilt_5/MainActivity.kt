@@ -11,16 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
-    private val list = ArrayList<Artist>()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val rvArtist : RecyclerView = findViewById(R.id.rvArtist)
-        val artistAdapter = ArtistAdapter(list) {
+        val artistAdapter = ArtistAdapter(getListArtist()) {
 
             val intent = Intent(this@MainActivity, DetailActivity::class.java)
             intent.putExtra(DetailActivity.ARTIST_OBJECT, it)
@@ -29,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         }
         rvArtist.adapter = artistAdapter
         rvArtist.layoutManager = LinearLayoutManager(this)
-
-        list.addAll(getListArtist())
 
     }
 
