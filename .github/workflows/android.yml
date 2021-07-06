@@ -14,6 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Getting branch
+      - name: Getting the branch
+        uses: nelonoel/branch-name@v1.0.1
+
       # Build .aab file
       - name: Build GPlay AAB
         run: ./gradlew bundleRelease
@@ -23,7 +27,7 @@ jobs:
         run: ./gradlew assembleRelease
 
       # Sign .aab file
-      - name: Sign AAB - ${BRANCH_NAME}
+      - name: Sign AAB - echo ${BRANCH_NAME}
         uses: r0adkll/sign-android-release@v1
         id: sign_aab
         with:
@@ -34,7 +38,7 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
 
       # Sign .apk file
-      - name: Sign APK - ${BRANCH_NAME}
+      - name: Sign APK - echo ${BRANCH_NAME}
         uses: r0adkll/sign-android-release@v1
         id: sign_apk
         with:
@@ -46,11 +50,11 @@ jobs:
       # 4
       - uses: actions/upload-artifact@v2
         with:
-          name: Signed apk ${{ github.head_ref }}
+          name: Signed apk ${{ BRANCH_NAME }}
           path: ${{steps.sign_apk.outputs.signedReleaseFile}}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: Signed aab ${{ github.head_ref }}
+          name: Signed aab ${{ BRANCH_NAME }}
           path: ${{steps.sign_aab.outputs.signedReleaseFile}}
 
