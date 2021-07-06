@@ -50,7 +50,7 @@ jobs:
           path: ${{steps.sign_apk.outputs.signedReleaseFile}}
 
       - uses: actions/upload-artifact@v2
-          with:
-            name: Signed aab
-            path: ${{steps.sign_aab.outputs.signedReleaseFile}}
+        with:
+          name: Signed aab
+          path: ${{steps.sign_aab.outputs.signedReleaseFile}}
 
