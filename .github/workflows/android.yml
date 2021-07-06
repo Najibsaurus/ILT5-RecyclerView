@@ -13,20 +13,37 @@ jobs:
       # 1
       - name: Checkout code
         uses: actions/checkout@v2
-      # 2
-      - name: Generate Release APK
+
+      # Build .aab file
+      - name: Build GPlay AAB
+        run: ./gradlew bundleRelease
+
+      # Build .apk file
+      - name: Build Standalone APK
         run: ./gradlew assembleRelease
-      # 3
+
+      # Sign .aab file
+      - name: Sign AAB
+        uses: r0adkll/sign-android-release@v1
+        id: sign_aab
+        with:
+          releaseDirectory: app/build/outputs/bundle/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+
+      # Sign .apk file
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
-        # ID used to access action output
-        id: sign_app
+        id: sign_apk
         with:
           releaseDirectory: app/build/outputs/apk/release
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          alias: ${{ secrets.KEY_ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
+
       # 4
       - uses: actions/upload-artifact@v2
         with:
