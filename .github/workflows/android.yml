@@ -2,7 +2,7 @@ name: Build Android
 
 on:
   push:
-    branches: [ main ]
+    branches: [ test ]
   pull_request:
     branches: [ main ]
     
@@ -46,11 +46,11 @@ jobs:
       # 4
       - uses: actions/upload-artifact@v2
         with:
-          name: Signed apk ${GITHUB_REF##*/}
+          name: Signed apk ${{ github.head_ref }}
           path: ${{steps.sign_apk.outputs.signedReleaseFile}}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: Signed aab ${GITHUB_REF##*/}
+          name: Signed aab ${{ github.head_ref }}
           path: ${{steps.sign_aab.outputs.signedReleaseFile}}
 
