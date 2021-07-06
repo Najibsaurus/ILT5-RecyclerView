@@ -23,7 +23,7 @@ jobs:
         run: ./gradlew assembleRelease
 
       # Sign .aab file
-      - name: Sign AAB - $(echo ${GITHUB_REF#refs/heads/})
+      - name: Sign AAB - ${BRANCH_NAME}
         uses: r0adkll/sign-android-release@v1
         id: sign_aab
         with:
@@ -34,7 +34,7 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
 
       # Sign .apk file
-      - name: Sign APK - $(echo ${GITHUB_REF#refs/heads/})
+      - name: Sign APK - ${BRANCH_NAME}
         uses: r0adkll/sign-android-release@v1
         id: sign_apk
         with:
