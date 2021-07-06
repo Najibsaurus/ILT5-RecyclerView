@@ -1,4 +1,4 @@
-name: Build
+name: Build Android
 
 on:
   push:
@@ -39,5 +39,3 @@ jobs:
         with:
           name: mapping.txt
           path: app/build/outputs/mapping/release/mapping.txt
-    
-
